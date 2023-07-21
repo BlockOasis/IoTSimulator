@@ -1,0 +1,7 @@
+{
+    "brokerIp": "emqx",
+    "port": 1883,
+    "topic": "test",
+    "csvFilePath": "./data/data.csv"
+  }
+  

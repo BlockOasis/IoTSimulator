@@ -1,0 +1,25 @@
+version: '3'
+services:
+  emqx:
+    image: emqx/emqx
+    container_name: emqx
+    ports:
+      - "1883:1883"
+      - "8083:8083"
+      - "8084:8084"
+      - "8883:8883"
+      - "18083:18083"
+    restart: always
+
+  mqtt_publisher:
+    build:
+      context: .  # Adjust this path to the correct location of the Dockerfile and mqttSender.js
+      dockerfile: Dockerfile
+    container_name: mqtt_publisher_container
+    depends_on:
+      - emqx
+    volumes:
+      - ./logfiles:/app/logfiles
+      - ./data:/app/data
+
+    
